@@ -1,34 +1,9 @@
 // src/components/Contact/Contact.jsx
 
 import React from 'react';
-import { useForm } from '@formspree/react';
 import './Contact.css';
 
 const Contact = () => {
-  const [state, handleSubmit] = useForm("mpwlvyqk"); // Your real ID
-
-  if (state.succeeded) {
-    return (
-      <section id="contact" className="contact-container">
-        <h1 className="main-header">Thank You!</h1>
-        <p className="contact-intro">Your message has been sent successfully. I'll get back to you soon.</p>
-      </section>
-    );
-  }
-
-  // This handles the "over quota" message
-  const isFormDisabled = state.errors && state.errors.some(err => err.code === 'FORM_DISABLED');
-  if (isFormDisabled) {
-    return (
-      <section id="contact" className="contact-container">
-        <h1 className="main-header">Thanks for Your Interest!</h1>
-        <p className="contact-intro">
-          This form is currently receiving a lot of messages. Please try again later or email me directly.
-        </p>
-      </section>
-    );
-  }
-
   return (
     <section id="contact" className="contact-container">
       <h1 className="main-header">Contact Me</h1>
@@ -36,7 +11,11 @@ const Contact = () => {
         Have a question or want to work together? Leave your details and I'll get back to you as soon as possible.
       </p>
       
-      <form onSubmit={handleSubmit} className="contact-form">
+      {/* This is a Netlify-enhanced HTML form */}
+      <form name="contact" method="POST" data-netlify="true">
+        {/* This hidden input is required for Netlify to identify the form */}
+        <input type="hidden" name="form-name" value="contact" />
+
         <div className="form-group">
           <label htmlFor="name">Name</label>
           <input type="text" id="name" name="name" required />
@@ -50,9 +29,7 @@ const Contact = () => {
           <textarea id="message" name="message" rows="5" required></textarea>
         </div>
         
-        <button type="submit" className="submit-button" disabled={state.submitting}>
-          {state.submitting ? 'Submitting...' : 'Send Message'}
-        </button>
+        <button type="submit" className="submit-button">Send Message</button>
       </form>
     </section>
   );
