@@ -1,0 +1,75 @@
+/* src/components/Education/Education.css */
+.education-container {
+  max-width: 900px;
+  margin: 4rem auto;
+  padding: 2rem;
+  text-align: left;
+}
+
+.education-content {
+  background-color: var(--surface-color); /* Use variable */
+  padding: 2rem 3rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color); /* Use variable */
+}
+
+.main-header {
+  font-size: 2.2rem;
+  color: var(--text-primary); /* Use variable */
+  border-bottom: 2px solid var(--primary-color); /* Use variable */
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.gpa {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-color); /* Use variable */
+  margin-top: -1rem;
+  margin-bottom: 3rem;
+}
+
+.sub-header {
+  font-size: 1.8rem;
+  color: var(--text-secondary); /* Use variable */
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.course-list {
+  display: grid;
+  gap: 2rem;
+}
+
+.course-item {
+  padding-left: 1rem;
+  border-left: 3px solid var(--primary-color); /* Use variable */
+}
+
+.course-item h3 {
+  font-size: 1.2rem;
+  color: var(--text-primary); /* Use variable */
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.course-item p {
+  margin: 0.25rem 0;
+  line-height: 1.6;
+  color: var(--text-muted); /* Use variable */
+}
+
+.other-courses {
+  font-style: italic;
+  color: #bbbbbb; /* Kept slightly different for stylistic choice */
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.closing-text p {
+  line-height: 1.7;
+  color: var(--text-muted); /* Use variable */
+  margin-bottom: 1rem;
+}

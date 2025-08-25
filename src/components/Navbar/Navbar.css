@@ -1,0 +1,78 @@
+/* src/components/Navbar/Navbar.css */
+.navbar {
+  width: 100%;
+  padding: 1rem 2rem;
+  background-color: var(--surface-color);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--surface-color);
+  background-color: var(--primary-color);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-grow: 1;
+}
+
+.nav-link {
+  color: var(--text-primary); /* Change to primary text */
+  text-decoration: none;
+  padding: 0.5rem 1.5rem;
+  margin: 0 0.5rem;
+  border-radius: 5px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  cursor: pointer;
+  transition: color 0.4s ease;
+}
+
+/* --- Background Wipe Animation --- */
+.nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease-in-out;
+  z-index: -1;
+}
+
+.nav-link:hover {
+  color: var(--surface-color); 
+}
+
+.nav-link:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.nav-link.active {
+  background-color: var(--primary-color);
+  color: var(--text-primary);
+}
+
+.nav-link.active::before {
+  transform: scaleX(1);
+}

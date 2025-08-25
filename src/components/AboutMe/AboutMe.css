@@ -1,0 +1,131 @@
+/* src/components/AboutMe/AboutMe.css */
+.about-me-container {
+  max-width: 800px;
+  margin: 4rem auto;
+  padding: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.welcome-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.welcome-header h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.welcome-header h2 {
+  font-size: 1.3rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  margin-top: 0.3rem;
+}
+
+.about-me-header {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+  text-align: center;
+  width: 100%;
+}
+
+/* --- Start of Animation Styles --- */
+
+/* 1. Style the new container */
+.profile-picture-container {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 2. Style the pseudo-elements for the waves */
+.profile-picture-container::before,
+.profile-picture-container::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* 3. Create the first wave with a conic gradient */
+.profile-picture-container::before {
+  background: conic-gradient(
+    from 90deg,
+    #4dfff9, /* Your cyan color */
+    #007bff, /* Your primary blue */
+    #9c27b0, /* A professional purple */
+    #4dfff9
+  );
+  animation: rotate 1s linear infinite;
+}
+
+/* 4. Create the second wave, slightly offset */
+.profile-picture-container::after {
+  background: conic-gradient(
+    from 270deg,
+    #4dfff9,
+    #007bff,
+    #9c27b0,
+    #4dfff9
+  );
+  animation: rotate 2s linear infinite reverse;
+  filter: blur(20px); /* Add a blur for a softer look */
+}
+
+/* 5. Define the rotation animation */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 6. Trigger the animation on hover */
+.profile-picture-container:hover::before,
+.profile-picture-container:hover::after {
+  opacity: 1;
+}
+
+/* This is the actual image inside the container */
+.profile-picture {
+  width: 100%; /* Make image fill the container */
+  height: 100%; /* Make image fill the container */
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--primary-color);
+}
+
+/* --- End of Animation Styles --- */
+
+
+.about-me-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: left;
+  color: var(--text-muted);
+  width: 100%;
+}
+
+.about-me-text p {
+  margin-bottom: 1rem;
+}
