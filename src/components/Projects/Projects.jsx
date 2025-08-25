@@ -5,7 +5,7 @@ import ImageModal from '../ImageModal/ImageModal';
 
 // Your specified image formats
 import teamLogo from '../../assets/team-logo.png';
-import cellDrawing from '../../assets/cell-drawing.png';
+import cellDrawing from '../../assets/Cell-Drawing.png';
 import cellCad from '../../assets/cell-cad.png';
 import cellSide from '../../assets/cell-side.jpg';
 import cellRear from '../../assets/cell-rear.jpg';
