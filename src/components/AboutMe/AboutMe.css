@@ -129,3 +129,27 @@
 .about-me-text p {
   margin-bottom: 1rem;
 }
+
+/* --- Responsive Styles --- */
+@media (max-width: 768px) {
+  .about-me-container {
+    margin: 2rem auto;
+    padding: 1rem;
+  }
+
+  .welcome-header h1 {
+    font-size: 3rem;
+  }
+  .welcome-header h2 {
+    font-size: 1.1rem;
+  }
+
+  .about-me-header {
+    font-size: 1.8rem;
+  }
+
+  .profile-picture {
+    width: 120px;
+    height: 120px;
+  }
+}

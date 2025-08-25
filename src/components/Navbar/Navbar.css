@@ -6,12 +6,15 @@
   border-bottom: 1px solid var(--border-color);
   display: flex;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .nav-logo {
   font-size: 1.5rem;
   font-weight: bold;
-  color: var(--surface-color);
+  color: var(--text-primary);
   background-color: var(--primary-color);
   width: 50px;
   height: 50px;
@@ -23,15 +26,15 @@
 
 .nav-links {
   display: flex;
-  justify-content: center;
   list-style: none;
   margin: 0;
   padding: 0;
   flex-grow: 1;
+  justify-content: center;
 }
 
 .nav-link {
-  color: var(--text-primary); /* Change to primary text */
+  color: var(--text-primary);
   text-decoration: none;
   padding: 0.5rem 1.5rem;
   margin: 0 0.5rem;
@@ -40,10 +43,26 @@
   z-index: 1;
   overflow: hidden;
   cursor: pointer;
-  transition: color 0.4s ease;
+  transition: color 0.4s ease, background-color 0.4s ease;
 }
 
-/* --- Background Wipe Animation --- */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 101;
+}
+
+.hamburger .line {
+  width: 25px;
+  height: 3px;
+  background-color: var(--text-primary);
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* --- Desktop Hover/Active Styles --- */
 .nav-link::before {
   content: '';
   position: absolute;
@@ -60,14 +79,15 @@
 }
 
 .nav-link:hover {
-  color: var(--surface-color); 
+  color: var(--text-secondary);
 }
 
 .nav-link:hover::before {
   transform: scaleX(1);
-  transform-origin: left;
+  transform-origin: right;
 }
 
+/* This is the desktop active style we need to override on mobile */
 .nav-link.active {
   background-color: var(--primary-color);
   color: var(--text-primary);
@@ -75,4 +95,72 @@
 
 .nav-link.active::before {
   transform: scaleX(1);
+}
+
+/* --- Responsive Styles for Mobile --- */
+@media (max-width: 768px) {
+  .navbar {
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--surface-color);
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    border-bottom: 1px solid var(--border-color);
+    transform: translateY(-150%);
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0.5s;
+    flex-grow: 0;
+  }
+
+  .nav-links.nav-active {
+    transform: translateY(0);
+    visibility: visible;
+    pointer-events: auto;
+    opacity: 1;
+  }
+
+  .nav-link {
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0; /* Reduced padding for smaller clickable area */
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  /* --- Mobile Hover/Active Style Overrides --- */
+  .nav-link:hover {
+    color: var(--text-primary);
+    background-color: var(--border-color);
+  }
+
+  .nav-link:hover::before {
+    transform: scaleX(0);
+  }
+
+  /* --- The Specificity Fix --- */
+  /* This rule forces the active link on mobile to have a transparent background and blue text */
+  .nav-link.active {
+    background-color: transparent !important;
+    color: var(--primary-color) !important;
+    font-weight: bold;
+  }
 }

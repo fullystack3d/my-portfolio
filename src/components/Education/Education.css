@@ -73,3 +73,10 @@
   color: var(--text-muted); /* Use variable */
   margin-bottom: 1rem;
 }
+
+/* --- Responsive Styles --- */
+@media (max-width: 768px) {
+  .education-content {
+    padding: 1rem;
+  }
+}

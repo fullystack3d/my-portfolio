@@ -70,3 +70,10 @@
 .submit-button:hover {
   background-color: var(--primary-hover-color);
 }
+
+/* --- Responsive Styles --- */
+@media (max-width: 768px) {
+  .contact-form {
+    padding: 1.5rem;
+  }
+}

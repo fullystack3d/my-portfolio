@@ -127,3 +127,14 @@
   gap: 1rem;
   margin: 2rem 0;
 }
+
+/* --- Responsive Styles --- */
+@media (max-width: 768px) {
+  .projects-content {
+    padding: 1rem;
+  }
+
+  .project-section {
+    padding: 1.5rem 1rem;
+  }
+}
