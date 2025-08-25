@@ -5,17 +5,7 @@ import { useForm } from '@formspree/react';
 import './Contact.css';
 
 const Contact = () => {
-  const [state, formspreeHandleSubmit] = useForm("mpwlvyqk"); // Use your actual ID
-
-  // --- Start of New Code ---
-  // Create a wrapper function to manually prevent the page reload
-  const handleSubmit = (e) => {
-    e.preventDefault(); // This line explicitly stops the page from reloading
-    console.log("Form submission handled by JavaScript!"); // You can see this in the browser console
-    formspreeHandleSubmit(e); // Now, let Formspree handle the submission
-  };
-  // --- End of New Code ---
-
+  const [state, handleSubmit] = useForm("mpwlvyqk"); // Your real ID
 
   if (state.succeeded) {
     return (
@@ -26,6 +16,7 @@ const Contact = () => {
     );
   }
 
+  // This handles the "over quota" message
   const isFormDisabled = state.errors && state.errors.some(err => err.code === 'FORM_DISABLED');
   if (isFormDisabled) {
     return (
@@ -45,7 +36,6 @@ const Contact = () => {
         Have a question or want to work together? Leave your details and I'll get back to you as soon as possible.
       </p>
       
-      {/* The form now calls our new wrapper function */}
       <form onSubmit={handleSubmit} className="contact-form">
         <div className="form-group">
           <label htmlFor="name">Name</label>
